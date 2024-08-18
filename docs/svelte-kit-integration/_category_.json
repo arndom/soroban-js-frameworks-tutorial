@@ -1,0 +1,9 @@
+{
+  "label": "SvelteKit Integration",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Integrating a SveleKit app with Soroban.",
+    "slug": "/svelte-kit-integration"
+  }
+}

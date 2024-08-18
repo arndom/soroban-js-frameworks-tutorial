@@ -1,0 +1,9 @@
+{
+  "label": "Next.js Integration",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Integrating a Next.js app with Soroban",
+    "slug": "/next-integration"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Nuxt Integration",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Integrating a Nuxt app with Soroban",
+    "slug": "/nuxt-integration"
+  }
+}
