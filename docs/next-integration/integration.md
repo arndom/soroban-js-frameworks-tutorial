@@ -407,6 +407,7 @@ Combining the above components allows us to create a fully functioning dApp.
 
 :::tip
 
-Here is the [GitHub Repo](#) for this tutorial.
+Here is the [GitHub Repo](https://github.com/arndom/nextjs-soroban-app) for this tutorial.
+[Live Demo](https://next-soroban.netlify.app/)
 
 :::
