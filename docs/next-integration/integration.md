@@ -420,7 +420,7 @@ export default function ChatFooter(props: Props) {
 }
 ```
 
-## Summary
+## Conclusion
 
 Combining the above components allows us to create a fully functioning dApp.
 
@@ -430,3 +430,8 @@ Combining the above components allows us to create a fully functioning dApp.
 - [Live Demo](https://next-soroban.netlify.app/)
 
 :::
+
+
+<h3>Nice job finishing this build 👏👏👏</h3>
+
+![alt text](../../static/img/end.png)
