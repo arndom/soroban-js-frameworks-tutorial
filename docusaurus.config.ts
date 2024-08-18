@@ -57,7 +57,7 @@ const config: Config = {
       },
       items: [
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/arndom/soroban-js-frameworks-tutorial',
           label: 'GitHub',
           position: 'right',
         },

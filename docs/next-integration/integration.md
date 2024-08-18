@@ -28,7 +28,7 @@ This is our **`deployments.json`** that indicates the address unique to this con
 
 ## Interacting with the contract
 
-To interacte with contract we need to have a wallet on the stellar network, there are a few options but for this we will be using
+To interact with our contract we need to have a wallet on the stellar network, there are a few options but for this we will be using
 [Freighter Wallet](https://www.freighter.app/).
 
 We will also be working on the test network as this is where the contract was deployed to.
@@ -44,16 +44,20 @@ With the above two understood, these are steps to interacting with out contract:
 
 ## Preparing our App
 
-To be able to do the above, we need a way to have our app talk to blockhain. For react there is a suites package prefixed with **@soroban-react** that gives us:
+To be able to do the above, we need a way to have our app talk to blockhain. For react there is a suites of packages prefixed with **@soroban-react** that gives us:
 - A Context Provider called `SorobanReactProvider`
   - Which we will use to specify:
     - The `chain(s)` we want our app to support
     - The  `contract(s)` our app will use to talk to blockhain
     - The `wallet(s)` our app will support
     - And our app name
-  - This context allows us build out all the features of our app.
-- It also provides a hook `useRegisteredContract` to allow us select our contract and work with it.
-- The above two are key in this integration.
+  - This context provides us variables and functions that allows
+    - Connect/Disconnect our wallet
+    - Sending a messgae
+    - Fetch the last message
+- It also provides a hook `useRegisteredContract` to allow us select our contract that we will use to fetch the last message & send our message
+
+> These two work together to make our application function seamlessly.
 
 :::info
 
@@ -64,8 +68,9 @@ Checkout [their `docs`](https://soroban-react.paltalabs.io/).
 :::
 
 ## Connecting our App
+The steps below are how will be creating our app.
 
-### Initialize the Soroban Context
+### Define the Soroban Context
 
 ```tsx
 "use client";
@@ -103,6 +108,7 @@ export default SorobanProvider;
 ```
 
 ### Wrap our app with the Context
+This goes in our app layout to wrap round everything, thereby giving every child component access to it.
 
 ```tsx
 import type { Metadata } from "next";
@@ -133,6 +139,10 @@ export default function RootLayout({
 ```
 
 ### Enable button to `Connect/Disconnet Wallet`
+With the `useSorobanReact` we now have access to:
+- Functions to connect & disconnect our wallet to/from our app.
+
+- Our wallet address
 
 ```tsx
 "use client";
@@ -183,6 +193,9 @@ export default function ConnectWallet () {
 
 ### Enable our select input to `Choose Chain/Network`
 
+- With the `useSorobanReact` we now have access to the chains we defined earlier in the creating of our context provider
+- We are also able to change the chain we want to work with
+
 ```tsx
 import { useSorobanReact } from "@soroban-react/core";
 import { ChangeEvent } from "react";
@@ -216,6 +229,10 @@ export default function ChainSelect() {
 ```
 
 ### Create a function to call `read_title`
+
+- This allows us to get the `greeting` contract from our intialised contracts via `useRegisteredContract`.
+- We now have access to the contract details and can call its its `read_title` function.
+- All of which is enables us get the last message.
 
 ```tsx
 import { useRegisteredContract } from "@soroban-react/contracts";
@@ -266,6 +283,7 @@ export default useFetchLastMessage;
 ```
 
 ### Use last message from `read_title` call
+- We are now able to access the last message and display it in our UI
 
 ```tsx
 "use client";
@@ -313,6 +331,7 @@ export default function Home() {
 ```
 
 ### Sending a message with `set_title`
+- This component uses the user input as the argument for calling the contracts `set_title` function
 
 ```tsx
 import { useRegisteredContract } from "@soroban-react/contracts";
@@ -407,7 +426,7 @@ Combining the above components allows us to create a fully functioning dApp.
 
 :::tip
 
-Here is the [GitHub Repo](https://github.com/arndom/nextjs-soroban-app) for this tutorial.
-[Live Demo](https://next-soroban.netlify.app/)
+- Here is the [GitHub Repo](https://github.com/arndom/nextjs-soroban-app) for this tutorial.
+- [Live Demo](https://next-soroban.netlify.app/)
 
 :::
